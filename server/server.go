@@ -101,3 +101,18 @@ func (s *Server) GetEntries(id string) (*[]Entry, error) {
 	}
 	return &l, nil
 }
+
+// SumCalories : return sum of calories from entries for specific user
+func (s *Server) SumCalories(id string) (int, error) {
+	var sum int
+	sqlStatement := `
+	SELECT SUM(calories)
+	FROM entries
+	WHERE fuser_id = $1`
+	err := s.db.QueryRow(sqlStatement, id).Scan(&sum)
+	if err != nil {
+		log.Print("No user to count calories for" + err.Error())
+		return 0, nil
+	}
+	return sum, nil
+}
