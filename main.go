@@ -12,6 +12,7 @@ import (
 
 func main() {
 	config, err := config.GetEnvConfig()
+	fmt.Printf(config)
 	if err != nil {
 		log.Fatal(err)
 	}
