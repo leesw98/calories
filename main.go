@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-
+	"fmt"
 	"github.com/bobheadxi/calories/bot"
 	"github.com/bobheadxi/calories/config"
 	"github.com/bobheadxi/calories/facebook"
@@ -12,7 +12,7 @@ import (
 
 func main() {
 	config, err := config.GetEnvConfig()
-	Print(config)
+	fmt.Print(config)
 	if err != nil {
 		log.Fatal(err)
 	}
